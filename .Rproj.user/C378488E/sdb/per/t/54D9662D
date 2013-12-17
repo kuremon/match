@@ -1,0 +1,15 @@
+{
+    "contents" : "#' search.that=c(\"volvo\",\"toyota\")\n#' in.that=row.names(mtcars)\n#' match=find_match(search.that,in.that)\nfind_match=function(search.that,in.that,...){\n  match=rep(NA_character_,length(search.that))\n  \n  for(k in seq(search.that)){\n    str=search.that[[k]]\n    result=agrep(str,in.that,...)\n    l.result=length(result)\n    if(l.result==0){\n      message(str,\" could not be matched.\")\n    }else{\n      message(str,\" :\")\n      cat(\"NA\",fill=TRUE,labels=paste0(\"{\",0,\"}:\"))\n      for(j in seq(1,l.result)){\n        cat(in.that[[result[j]]],fill=TRUE,labels=paste0(\"{\",j,\"}:\"))\n      }\n      int=readline(\"So ...? \")\n      if(int==\"q\"){\n        warning(\"find_match was quitted in mid execution.\")\n        return(match)\n      }\n      int=as.numeric(int)\n      if(int%in%seq(1,l.result))match[k]=in.that[[result[int]]]\n    }\n  }\n  match\n}",
+    "created" : 1381292319443.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1240022306",
+    "id" : "54D9662D",
+    "lastKnownWriteTime" : 1381279633,
+    "path" : "~/R&D/R packages/Code to package/find_match.R",
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

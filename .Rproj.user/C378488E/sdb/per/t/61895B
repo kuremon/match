@@ -1,0 +1,16 @@
+{
+    "contents" : "#' @title Find adjacency groups from a distance matrix\n#' @rdname find_groups\n#' @param d A distance matrix.\n#' @param limit The tradeoff for the adjacency groups.\n#' @param reduce Should the group of size 1 be removed from the final list?\n#' @return A list of groups.\n#' @export\n#' @examples\n#' \\donttest{\n#' petal=iris[c(\"Petal.Length\",\"Petal.Width\")]\n#' d=dist(petal)\n#' find_groups(as.matrix(d),0.25)\n#' }\n#' @title Find adjacency groups from a distance matrix\n#' @param d A distance matrix.\n#' @param limit The tradeoff for the adjacency groups.\n#' @param reduce Should the group of size 1 be removed from the final list?\n#' @return A list of groups.\n#' @export\n#' @examples\n#' \\donttest{\n#' petal=iris[c(\"Petal.Length\",\"Petal.Width\")]\n#' d=dist(petal)\n#' find_groups(as.matrix(d),0.25)\n#' }\nfind_membership=function(d,limit){\n  d=as.matrix(d)\n  x=row.names(d)\n  g=graph.adjacency(d<=limit, mode=\"undirected\")\n  cl=clusters(g)\n  membership(cl)\n}\n\n\n#' @rdname find_groups\n#' @export\nfind_groups=function(d,limit,reduce=TRUE){\n  member=find_membership(d,limit)\n  groups=split(x,member)\n  if(reduce){\n    groups=groups[(sapply(groups,length)>1)]\n  }\n  groups\n}",
+    "created" : 1381292975179.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3489981385",
+    "id" : "61895B",
+    "lastKnownWriteTime" : 1381365891,
+    "path" : "~/R&D/R packages/Source packages/match/R/find_groups.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

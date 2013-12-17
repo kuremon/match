@@ -1,0 +1,15 @@
+Package: match
+Type: Package
+Title: Match things together
+Version: 1.0
+Date: 2013-10-09
+Author: Clement Bonini
+Maintainer: Clement Bonini <clement.bonini@gmail.com>
+Description: This package provides tools to help match and merge values from
+    different sources.
+License: GPL
+Collate:
+    'find_groups.R'
+    'imatch.R'
+    'match.R'
+    'mapping.R'

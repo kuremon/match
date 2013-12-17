@@ -1,0 +1,15 @@
+{
+    "contents" : "# works only on character (not on factor nor numeric)\n# not vectorized\nlodsplit.base=function(str){\n  split=strsplit(as.character(str),split='<')[[1]]\n  l.split=length(split)\n  if(l.split==0){\n    value=NA\n  }\n  else{\n    value=suppressWarnings(as.numeric(tail(split,1))) # to avoid raising a warning with \"NA\" value.\n  }\n  list(value=value,lod=(l.split>1))\n}\n\nlodsplit.base.value.only=function(str){\n  lodsplit.base(str)$value  \n}\n\nlodsplit2=function(data,except=NULL,except.col=except,value.only=TRUE){\n  col.index=get_col.index(colnames(data),except.col)\n  if(value.only){\n    fun=Vectorize(lodsplit.base.value.only)\n  }\n  else{\n    fun=Vectorize(lodsplit.base)\n  }\n  data[col.index]=colwise(fun)(data[col.index])\n  data\n}\n\n#' @title Retrieve values at LOD in a data frame.\n#' @param data the data to apply LOD split on.\n#' @param except the index or names of the columns that won't be modified.\n#' @param value.only if \\code{value.only} is true, only the numeric data frame is returned.\n#' Otherwise a list with the numeric data and the indexes is returned.\n#' @param transform a function that transform the value in returned data.\n#' @export\nlodsplit=function(data,except=NULL,value.only=TRUE,transform=identity){\n  col.index=get_col.index(colnames(data),except)\n  \n  M=as.matrix(data[col.index])\n  \n  split=strsplit(M,split='<')\n  split.value=transform(matrix(sapply(split,function(x)as.numeric(tail(x,1))),dim(M)))\n  \n  data[col.index]=split.value\n  \n  if(value.only) return(data)\n  is.split=matrix(FALSE,nrow(data),ncol(data))\n  is.split[,col.index]=sapply(split,length)>1\n  list(data=data,index=which(is.split,arr.ind=TRUE))\n}\n\n\n",
+    "created" : 1381292401124.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "4083704799",
+    "id" : "E17DF5A3",
+    "lastKnownWriteTime" : 1375329593,
+    "path" : "~/R&D/R packages/Source packages/easyxlsx/R/lodsplit.R",
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

@@ -1,0 +1,15 @@
+{
+    "contents" : "#' @title match\n#' @name match_package\n#' @docType package\n#' @import igraph\nNULL",
+    "created" : 1381292268007.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "4119719091",
+    "id" : "C955EF6",
+    "lastKnownWriteTime" : 1381292983,
+    "path" : "~/R&D/R packages/Source packages/match/R/match.R",
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

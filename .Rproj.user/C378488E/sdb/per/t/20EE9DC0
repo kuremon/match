@@ -1,0 +1,16 @@
+{
+    "contents" : "#' @title Coerce correspondance table into a mapping\n#' @param data a data frame\n#' @param from column of \\code{data} that has to be mapped.\n#' @param to column of \\code{data} that contains the end result.\n#' @export\nas.mapping=function(data,from,to){\n  mapping=data[[to]]\n  names(mapping)=data[[from]]\n  mapping\n}\n\n#' @title Find the origin value in a mapping\n#' @param mapping See \\code{\\link{mapping}}\n#' @param find end value of the mapping.\n#' @return the origin value corresponding to \\code{find} in \\code{mapping}.\n#' @export\nfind.in.mapping=function(mapping,find){\n  names(mapping[mapping%in%find])\n}",
+    "created" : 1385529613524.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "246590625",
+    "id" : "20EE9DC0",
+    "lastKnownWriteTime" : 1385529911,
+    "path" : "~/R&D/R packages/Source packages/match/R/mapping.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

@@ -1,0 +1,7 @@
+export(as.mapping)
+export(find.in.mapping)
+export(find_groups)
+export(find_membership)
+export(imap)
+export(imatch)
+import(igraph)
